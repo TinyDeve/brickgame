@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83a1ef0acda62f545a7ed24018b96e2c, type: 3}
+  m_Name: ColorConfig
+  m_EditorClassIdentifier: 
+  AllObstacleColor:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.9635534, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.12592554, a: 1}
+  - {r: 0, g: 1, b: 0.99010324, a: 1}
+  - {r: 0, g: 0.11066723, b: 1, a: 1}
+  - {r: 0.6713352, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0.90825653, a: 1}
+  - {r: 1, g: 0, b: 0.40356064, a: 1}
+  - {r: 1, g: 0, b: 0.44950724, a: 1}
+  - {r: 1, g: 0, b: 0.2579775, a: 1}
