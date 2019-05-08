@@ -19,10 +19,13 @@ namespace net.onur.brick.controller.brick
 		[SerializeField]private float mTapTimeWindow = 0.1f;
 		[SerializeField]private float mTapMoveWindow = 2f;
 
-		//Controller
-		[SerializeField]private GameController gameController;
-		
-		[Space]
+        //Controller
+        [SerializeField] private GameController gameController;
+
+        [SerializeField] private Transform _objectTransform;
+        [SerializeField] private Transform _cameraTransform;
+
+        [Space]
 		//[Range(0,500)]
 		[SerializeField]private int xForceAmount;
 
@@ -60,20 +63,37 @@ namespace net.onur.brick.controller.brick
 			if (gameMode.Equals(GameMode.PLAY))
 			{
 				GetInput();
+                if (!_firstMove)
+                {
+
+                    if (!(transform.position.y > _objectTransform.position.y)) return;
+
+
+                    _objectTransform.position = new Vector3(0, transform.position.y, 0);
+
+
+                    if (transform == null || !(transform.position.y > _cameraTransform.position.y)) return;
+                    
+                    _cameraTransform.position = Vector3.Lerp(
+                            _cameraTransform.position,
+                            new Vector3(0, transform.position.y, -10f),
+                            0.5f);
+                }
 			}
+
 		}
 
 		public void ResetValues()
 		{
 			
 			Debug.Log("BrickResetStart");
-			_firstMove = true;
 			FreezeBall(true);
 			_collider2D.isTrigger = false;
 			if(gameMode.Equals(GameMode.NOGAME))ChangeGameModePlay();
-			
-			
-			_rigidBody2D.freezeRotation = true;
+
+            _firstMove = true;
+
+            _rigidBody2D.freezeRotation = true;
 			_rigidBody2D.position = new Vector3(0,-5,0);
 			_rigidBody2D.velocity = new Vector2(0, 0);
 			_rigidBody2D.angularVelocity = 0;
@@ -113,9 +133,9 @@ namespace net.onur.brick.controller.brick
 			Debug.Log("KillGame : game killed");
 			//Change game mode
 			gameMode = GameMode.NOGAME;
-			
-			//Start kill animation
-			_collider2D.isTrigger = true;
+
+            //Start kill animation
+            _collider2D.isTrigger = true;
 			_rigidBody2D.freezeRotation = false;
 			_rigidBody2D.AddForce(new Vector2(0,-300));
 			_rigidBody2D.angularVelocity = Random.Range(100, 300);

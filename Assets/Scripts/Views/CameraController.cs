@@ -9,8 +9,6 @@ namespace net.onur.brick.views.cameracontroller
 		[SerializeField]private Transform brickTransform;
 		private Transform _cameraTransform;
 
-
-		//private Tween boxTween;
 		// Use this for initialization
 		protected override void Start()
 		{

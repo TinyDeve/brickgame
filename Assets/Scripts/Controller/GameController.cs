@@ -101,20 +101,16 @@ namespace net.onur.brick.views.gamecontroller
 			_score = 0;
 			scoreText.text = "0";
 			
-			Debug.Log("RestartScore");
 			
-			//_bestScore = GameModel.Score;
-			//bestText.text = _bestScore.ToString();
-			bestText.text = _resetTime.ToString();
+			_bestScore = GameModel.Score;
+			bestText.text = _bestScore.ToString();
 			
-			Debug.Log("RestartBestScore");
 			
 			//camera
 			followCamera.transform.position = new Vector3(0,0,-10);
 			//follow brick object
 			followBrick.position = new Vector3(0,-5,0);
 			
-			Debug.Log("RestartCamera");
 
 			//Pool all remain objects
 			SendObjectsToPool();
@@ -126,12 +122,8 @@ namespace net.onur.brick.views.gamecontroller
 			}
 			
 			
-			Debug.Log("RestartPooling");
-			
 			//Reset ball Controller Values
 			brickController.ResetValues();
-			
-			Debug.Log("RestartBrickReset");
 		}
 
 		private void SendObjectsToPool()
